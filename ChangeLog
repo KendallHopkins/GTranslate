@@ -1,2 +1,4 @@
+0.7.1:
+- Added TM to protected brand word
 0.7.0:
 - Initial release for the Google Translate API PHP Wrapper
