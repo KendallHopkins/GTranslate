@@ -1,9 +1,10 @@
 <?php
 
 /**
-* GTranslate - A class to comunicate with Google Translate Service
-*               Google Translate API Wrapper
-*               More info about Google service can be found on http://code.google.com/apis/ajaxlanguage/documentation/reference.html
+* GTranslate - A class to comunicate with Google Translate(TM) Service
+*               Google Translate(TM) API Wrapper
+*               More info about Google(TM) service can be found on http://code.google.com/apis/ajaxlanguage/documentation/reference.html
+* 		This code has o affiliation with Google (TM) , its a PHP Library that allows to comunicate with public a API
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -19,8 +20,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *
 * @author Jose da Silva <jose@josedasilva.net>
-* @since 2009/01/09
-* @version 0.7
+* @since 2009/01/11
+* @version 0.7.1
 * @licence LGPL v3
 *
 * <code>
@@ -56,14 +57,14 @@ class GTranslateException extends Exception
 class GTranslate
 {
 	/**
-	* Google Translate Api endpoint
+	* Google Translate(TM) Api endpoint
 	* @access private
 	* @var String 
 	*/
 	private $url = "http://ajax.googleapis.com/ajax/services/language/translate";
 	
         /**
-        * Google Translate Api Version
+        * Google Translate (TM) Api Version
         * @access private
         * @var String 
         */	
@@ -126,7 +127,7 @@ class GTranslate
 
 	
         /**
-        * Query the Google endpoint 
+        * Query the Google(TM) endpoint 
         * @access private
         * @param array $lang_pair
         * @param array $string
