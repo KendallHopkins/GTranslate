@@ -92,6 +92,13 @@ class GTranslate
         */
 	private $available_languages = array();
 
+	/**
+	* Google Translate api key
+ 	* @access private 
+	* @var string
+	*/
+	private $api_key = null;
+
         /**
         * Constructor sets up {@link $available_languages}
         */
@@ -116,6 +123,11 @@ class GTranslate
 			"langpair"=> implode("|",$lang_pair)
 		);
 
+		if(!empty($this->api_key))
+		{
+			$parameters["key"] = $this->api_key;
+		}
+
 		$url  = $this->url."?";
 
 		foreach($parameters as $k=>$p)
@@ -125,6 +137,19 @@ class GTranslate
 		return $url;
 	}
 
+	/**
+	* Define the Google Translate Api Key
+ 	* @access public
+	* @param string $api_key
+	* return boolean
+	*/
+	public function setApiKey($api_key) {
+  		if (!empty($api_key)) {
+	    		$this->api_key = $api_key;
+			return true;
+  		}
+		return false;
+	}
 	
         /**
         * Query the Google(TM) endpoint 
@@ -150,6 +175,7 @@ class GTranslate
 
 	private function requestHttp($url)
 	{
+		echo $url;
 		return GTranslate::evalResponse(json_decode(file_get_contents($url)));
 	}
 
