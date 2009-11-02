@@ -128,13 +128,27 @@ class GTranslate
 			$parameters["key"] = $this->api_key;
 		}
 
-		$url  = $this->url."?";
+		$url  = "";
 
 		foreach($parameters as $k=>$p)
 		{
 			$url 	.=	$k."=".urlencode($p)."&";
 		}
 		return $url;
+	}
+
+	/**
+	* Define the request type
+	* @access public
+	* @param string $request_type
+	* return boolean
+	*/
+	public function setRequestType($request_type = 'http') {
+  		if (!empty($request_type)) {
+	    		$this->request_type = $request_type;
+			return true;
+  		}
+		return false;
 	}
 
 	/**
@@ -175,8 +189,7 @@ class GTranslate
 
 	private function requestHttp($url)
 	{
-		echo $url;
-		return GTranslate::evalResponse(json_decode(file_get_contents($url)));
+		return GTranslate::evalResponse(json_decode(file_get_contents($this->url."?".$url)));
 	}
 
         /**     
@@ -189,11 +202,13 @@ class GTranslate
 	private function requestCurl($url)
 	{
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_URL, $this->url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_REFERER, $_SERVER["HTTP_REFERER"]);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $url);
 		$body = curl_exec($ch);
-		curl_close($ch);		
+		curl_close($ch);
 		return GTranslate::evalResponse(json_decode($body));
 	}
 
