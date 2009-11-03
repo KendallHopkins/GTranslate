@@ -1,11 +1,22 @@
 <?php
 require("GTranslate.php");
 
+/**
+* Example using RequestHTTP
+*/
+$translate_string = "Das ist wunderschön";
  try{
        $gt = new Gtranslate;
-       echo "Translating [Hello World] from English to German => ".$gt->english_to_german("hello world")."<br/>";
-	echo "Translating [Ciao mondo] Italian to English => ".$gt->it_to_en("Ciao mondo")."<br/>";
- } catch (GTranslateException $ge)
+	echo "[HTTP] Translating [$translate_string] German to English => ".$gt->german_to_english($translate_string)."<br/>";
+
+	/**
+	* Lets switch the request type to CURL
+	*/
+	$gt->setRequestType('curl');
+
+	echo "[CURL] Translating [$translate_string] German to English => ".$gt->german_to_english($translate_string)."<br/>";
+
+} catch (GTranslateException $ge)
  {
        echo $ge->getMessage();
  }
