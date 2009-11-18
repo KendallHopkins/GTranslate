@@ -20,8 +20,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *
 * @author Jose da Silva <jose@josedasilva.net>
-* @since 2009/01/11
-* @version 0.7.1
+* @since 2009/11/18
+* @version 0.7.4
 * @licence LGPL v3
 *
 * <code>
@@ -204,7 +204,7 @@ class GTranslate
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $this->url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_REFERER, $_SERVER["HTTP_REFERER"]);
+		curl_setopt($ch, CURLOPT_REFERER, !empty($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : "");
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $url);
 		$body = curl_exec($ch);

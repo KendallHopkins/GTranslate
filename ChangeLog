@@ -1,3 +1,5 @@
+0.7.4:
+- Fixed warning when no $_SERVER['HTTP_REFERER'] is defined, issue [5]
 0.7.3:
 - Changed CURL request call to POST in order to allow big text translation,
 issue [2]
