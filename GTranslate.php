@@ -99,6 +99,13 @@ class GTranslate
 	*/
 	private $api_key = null;
 
+	/**
+	* Google request User IP
+	* @access private
+	* @var string	
+	*/
+	private $user_ip = null;
+
         /**
         * Constructor sets up {@link $available_languages}
         */
@@ -126,6 +133,17 @@ class GTranslate
 		if(!empty($this->api_key))
 		{
 			$parameters["key"] = $this->api_key;
+		}
+
+		if( empty($this->user_ip) ) 
+		{
+			if( !empty($_SERVER["REMOTE_ADDR"]) ) 
+			{
+				$parameters["userip"]	=	$_SERVER["REMOTE_ADDR"];
+			}
+		} else 
+		{
+			$parameters["userip"]   =	$this->user_ip;
 		}
 
 		$url  = "";
@@ -160,6 +178,20 @@ class GTranslate
 	public function setApiKey($api_key) {
   		if (!empty($api_key)) {
 	    		$this->api_key = $api_key;
+			return true;
+  		}
+		return false;
+	}
+	
+	/**
+	* Define the User Ip for the query
+ 	* @access public
+	* @param string $ip
+	* return boolean
+	*/
+	public function setUserIp($ip) {
+  		if (!empty($ip)) {
+	    		$this->user_ip = $ip;
 			return true;
   		}
 		return false;
