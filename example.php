@@ -7,14 +7,13 @@ require("GTranslate.php");
 $translate_string = "Das ist wunderschön";
  try{
        $gt = new Gtranslate;
-	echo "[HTTP] Translating [$translate_string] German to English => ".$gt->german_to_english($translate_string)."<br/>";
+	echo "[HTTP] Translating [$translate_string] German to English => ".$gt->german_to_english($translate_string)."\n";
 
 	/**
 	* Lets switch the request type to CURL
 	*/
 	$gt->setRequestType('curl');
-
-	echo "[CURL] Translating [$translate_string] German to English => ".$gt->german_to_english($translate_string)."<br/>";
+	echo "[CURL] Translating [$translate_string] German to English => ".$gt->german_to_english($translate_string)."\n";
 
 } catch (GTranslateException $ge)
  {
