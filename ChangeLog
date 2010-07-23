@@ -1,3 +1,9 @@
+0.7.6
+- Bug fixing
+ Afrikaans support fix, issue [24]
+- Added functionalities
+  Irish support, issue [16]
+  userip parameter supported, issue [17]
 0.7.4:
 - Fixed warning when no $_SERVER['HTTP_REFERER'] is defined, issue [5]
 0.7.3:
