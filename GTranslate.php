@@ -28,7 +28,7 @@
 * <?
 * require_once("GTranslate.php");
 * try{
-*	$gt = new Gtranslate;
+*	$gt = new GTranslate;
 *	echo $gt->english_to_german("hello world");
 * } catch (GTranslateException $ge)
 * {
@@ -56,11 +56,18 @@ class GTranslateException extends Exception
 
 class GTranslate
 {
-	/**
-	* Google Translate(TM) Api endpoint
-	* @access private
-	* @var String 
-	*/
+        /**
+        * Path to available languages file
+        * @access private
+        * @var String 
+        */
+	static public $available_languages_file 	= "languages.ini";
+
+		/**
+		* Google Translate(TM) Api endpoint
+		* @access private
+		* @var String 
+		*/
 	private $url = "http://ajax.googleapis.com/ajax/services/language/translate";
 	
         /**
@@ -77,13 +84,6 @@ class GTranslate
         * @var String 
         */
 	private $request_type = "http";
-
-        /**
-        * Path to available languages file
-        * @access private
-        * @var String 
-        */
-	private $available_languages_file 	= "languages.ini";
 	
         /**
         * Holder to the parse of the ini file
@@ -111,7 +111,7 @@ class GTranslate
         */
 	public function __construct()
 	{
-		$this->available_languages = parse_ini_file("languages.ini");
+		$this->available_languages = parse_ini_file(self::$available_languages_file);
 	}
 
         /**
